@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk | Visco Print</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1a56db',
+                        'brand-blue-hover': '#1e40af',
+                        'brand-accent': '#3b82f6',
+                        'brand-dark': '#1a1f2e',
+                        'adore-text': '#555555',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-[#f8f9fa] text-adore-text font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- FLOATING CART BUTTON -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="relative bg-white text-black p-4 rounded-full shadow-2xl border border-gray-100 flex items-center justify-center hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+            <span class="absolute -top-1 -left-1 bg-black text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">1</span>
+        </button>
+    </div>
+
+    <!-- HEADER (Navigation) -->
+    <header class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="index.html" class="flex flex-col">
+                <span class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-brand-blue leading-none">VISCO PRINT</span>
+                <span class="text-[9px] tracking-[0.25em] text-brand-blue font-sans uppercase mt-1">INDUSTRIAL & DIGITAL PRINT</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="text-brand-blue hover:text-brand-accent transition-colors">Home</a>
+                <a href="index.html" class="text-brand-blue hover:text-brand-accent transition-colors">Profile</a>
+                <a href="product.html" class="text-brand-accent font-bold transition-colors">Product</a>
+                <a href="blog.html" class="text-brand-blue hover:text-brand-accent transition-colors">Blog</a>
+                <a href="contact.html" class="text-brand-blue hover:text-brand-accent transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="cart.html" class="flex items-center gap-1.5 text-brand-blue font-medium text-sm hover:text-brand-accent transition-colors">
+                    <span>Cart</span>
+                    <span class="material-symbols-outlined text-lg">shopping_cart</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PRODUCT CONTENT -->
+    <main class="w-full py-10 px-6 flex-grow">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Header Halaman -->
+            <div class="mb-6">
+                <h1 class="text-[32px] md:text-4xl font-bold text-brand-dark mb-2 font-sans tracking-tight">Katalog Produk</h1>
+                <p class="text-gray-500 text-sm font-medium">Pilih produk, sesuaikan ukuran, material, dan unggah desain Anda.</p>
+            </div>
+            
+            <hr class="border-gray-200 mb-8">
+
+            <!-- Filter Kategori -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+                <button class="bg-brand-dark text-white text-xs font-semibold px-5 py-2 rounded-full whitespace-nowrap shadow-sm">Semua Produk</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-brand-dark hover:text-brand-dark text-xs font-medium px-5 py-2 rounded-full whitespace-nowrap transition-colors">Sablon DTF</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-brand-dark hover:text-brand-dark text-xs font-medium px-5 py-2 rounded-full whitespace-nowrap transition-colors">Print Sublimasi</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-brand-dark hover:text-brand-dark text-xs font-medium px-5 py-2 rounded-full whitespace-nowrap transition-colors">Custom Apparel</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-brand-dark hover:text-brand-dark text-xs font-medium px-5 py-2 rounded-full whitespace-nowrap transition-colors">Merchandise & Accessories</button>
+            </div>
+
+            <!-- Grid Produk -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Cetak Sablon DTF -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/Cetak DTF.jpeg" alt="Cetak Sablon DTF" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Cetak Sablon DTF</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Cetak desain full color dengan tinta solid, siap press.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start from Rp 35rb<span class="text-gray-400 text-xs font-normal ml-0.5">/A3</span></div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Cetak Sablon DTF* (Rp 35rb/A3). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Print Sublim -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/proses-print-sublim-medium.jpeg" alt="Print Sublim" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Print Sublim</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Cetak pola full-print untuk tekstil dengan mesin hi-res.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]"> Start from Rp 25rb<span class="text-gray-400 text-xs font-normal ml-0.5">/m</span></div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Print Sublim* (Rp 45rb/m). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Kaos Custom DTF -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <div class="absolute top-3 left-3 bg-[#f03a3a] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider z-10">BEST SELLER</div>
+                        <img src="./img/Kaos custom DTF.jpeg" alt="Kaos Custom DTF" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Kaos Custom DTF</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Kaos distro ditambah sablon custom tanpa batas warna.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start From Rp 75rb</div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Kaos Custom DTF* (Rp 75rb). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Tote Bag Custom -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/Tote bag custom.jpeg" alt="Tote Bag Custom" class="w-full h-full object-cover p-2 bg-white">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Tote Bag Custom</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Tote bag blacu/kanvas tangguh untuk merchandise.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start from Rp 25rb</div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Tote Bag Custom* (Rp 25rb). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Topi Trucker Custom -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/Topi.jpeg" alt="Topi Trucker Custom" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Topi Trucker Custom</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Topi jaring jaring dengan cetak logo presisi untuk event.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start from Rp 20rb</div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Topi Trucker Custom* (Rp 20rb). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Bendera / Spanduk Kain -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/Sablon Bendera.jpeg" alt="Bendera / Spanduk Kain" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Bendera & Spanduk Kain</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Cetak spanduk bahan kain tc/satin warna tajam tahan air.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start from Rp 30rb<span class="text-gray-400 text-xs font-normal ml-0.5">/m</span></div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Bendera & Spanduk Kain* (Rp 30rb/m). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Stiker UV DTF Cermin -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <div class="absolute top-3 left-3 bg-[#f03a3a] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider z-10">NEW</div>
+                        <img src="./img/Shop.jpeg" alt="Stiker UV DTF" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Stiker UV DTF </h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Stiker timbul tanpa mesin press, rekat di media keras.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start from Rp 50rb<span class="text-gray-400 text-xs font-normal ml-0.5">/A3</span></div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Stiker UV DTF Cermin* (Rp 50rb/A3). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Custom Label Woven/Satin -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/Batik.jpeg" alt="Custom Label Baju" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Batik Printing</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Batik printing.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start fromRp 65rb<span class="text-gray-400 text-xs font-normal ml-0.5">/m</span></div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Label Pakaian Brand* (Rp 100rb/roll). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <!-- Card 8: Custom Label Woven/Satin -->
+                <div class="bg-white rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="h-[180px] w-full bg-gray-100 relative overflow-hidden">
+                        <img src="./img/jersey.jpeg" alt="Custom Label Baju" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-brand-dark font-bold text-[17px] mb-1.5 font-sans">Jersey</h2>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-2">Jersey.</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div class="text-brand-blue font-bold text-[19px]">Start from Rp 85rb<span class="text-gray-400 text-xs font-normal ml-0.5">/m</span></div>
+                            <a href="https://wa.me/6281234567890?text=Halo Visco Print, saya ingin memesan *Label Pakaian Brand* (Rp 100rb/roll). Mohon informasi lebih lanjut." target="_blank" class="bg-brand-dark hover:bg-black text-white text-[13px] font-semibold px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">send</span> Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-12 flex justify-center items-center gap-2">
+                <button class="w-9 h-9 rounded-lg border border-gray-200 bg-white text-gray-500 hover:border-brand-dark hover:text-brand-dark flex items-center justify-center font-medium text-sm transition-colors">
+                    <span class="material-symbols-outlined text-lg">chevron_left</span>
+                </button>
+                <button class="w-9 h-9 rounded-lg bg-brand-dark text-white font-medium text-sm">1</button>
+                <button class="w-9 h-9 rounded-lg border border-gray-200 bg-white text-gray-500 hover:border-brand-dark hover:text-brand-dark flex items-center justify-center font-medium text-sm transition-colors">2</button>
+                <button class="w-9 h-9 rounded-lg border border-gray-200 bg-white text-gray-500 hover:border-brand-dark hover:text-brand-dark flex items-center justify-center font-medium text-sm transition-colors">
+                    <span class="material-symbols-outlined text-lg">chevron_right</span>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-100 py-8 px-6 mt-16">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+            <p>© 2026 Visco Print. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-brand-dark transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-brand-dark transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-brand-dark transition-colors">Help Center</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

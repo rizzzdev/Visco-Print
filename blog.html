@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Blog & Inspirasi | Visco Print</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1a56db', /* Biru Utama */
+                        'brand-blue-hover': '#1e40af', 
+                        'brand-accent': '#3b82f6', 
+                        'brand-dark': '#1a1f2e', /* Navy gelap */
+                        'adore-text': '#555555',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+        /* Styling tambahan untuk memuluskan transisi hover */
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-adore-text font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- FLOATING CART BUTTON (Disamakan dengan web utama) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="window.location.href='#cart'" class="relative bg-white text-black w-14 h-14 rounded-full shadow-2xl border border-gray-100 flex items-center justify-center hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+            <span class="absolute -top-1 -right-1 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">1</span>
+        </button>
+    </div>
+
+    <!-- HEADER -->
+    <header class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <!-- Logo Kiri -->
+            <a href="#" class="flex flex-col">
+                <span class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-brand-blue leading-none">VISCO PRINT</span>
+                <span class="text-[9px] tracking-[0.25em] text-brand-blue font-sans uppercase mt-1">INDUSTRIAL & DIGITAL PRINT</span>
+            </a>
+
+            <!-- Menu Tengah (Sesuai Referensi Gambar) -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="text-brand-blue hover:text-brand-accent transition-colors">Home</a>
+                <a href="index.html" class="text-brand-blue hover:text-brand-accent transition-colors">Profile</a>
+                <a href="product.html" class="text-brand-blue hover:text-brand-accent transition-colors">Product</a>
+                <!-- Blog ditandai sebagai halaman aktif dengan font-bold atau warna beda -->
+                <a href="blog.html" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-1 transition-colors">Blog</a>
+                <a href="contact.html" class="text-brand-blue hover:text-brand-accent transition-colors">Contact</a>
+            </nav>
+
+            <!-- Cart Kanan -->
+            <div class="flex items-center gap-2">
+                <a href="#" class="flex items-center gap-1.5 text-brand-blue font-medium text-sm hover:text-brand-accent transition-colors">
+                    <span>Cart</span>
+                    <span class="material-symbols-outlined text-lg">shopping_cart</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HEADER HALAMAN BLOG (Meniru gaya "Katalog Produk") -->
+        <section class="max-w-7xl mx-auto px-6 mt-12 mb-8">
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Blog & Inspirasi</h1>
+            <p class="text-gray-500 text-sm md:text-base max-w-2xl">
+                Temukan panduan, tips perawatan, rekomendasi bahan, dan inspirasi desain terbaru untuk kebutuhan cetak apparel dan merchandise Anda.
+            </p>
+            <div class="w-full h-[1px] bg-gray-200 mt-8 mb-8"></div>
+        </section>
+
+        <!-- FILTER KATEGORI (Meniru tombol "Semua Produk", "Sablon DTF", dll) -->
+        <section class="max-w-7xl mx-auto px-6 mb-10">
+            <div class="flex flex-wrap gap-3">
+                <button class="bg-[#1a1f2e] text-white px-5 py-2 rounded-full text-sm font-medium">Semua Artikel</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-gray-400 px-5 py-2 rounded-full text-sm font-medium transition-colors">Edukasi Produk</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-gray-400 px-5 py-2 rounded-full text-sm font-medium transition-colors">Tips & Perawatan</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-gray-400 px-5 py-2 rounded-full text-sm font-medium transition-colors">Inspirasi Desain</button>
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-gray-400 px-5 py-2 rounded-full text-sm font-medium transition-colors">Peluang Bisnis</button>
+            </div>
+        </section>
+
+        <!-- GRID ARTIKEL (Meniru gaya Grid Katalog Produk) -->
+        <section class="max-w-7xl mx-auto px-6 mb-20">
+            <!-- Kita pakai 3 kolom (atau 4) untuk desktop agar mirip katalog, tapi lebih nyaman dibaca -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Artikel 1 (Contoh Edukasi Produk) -->
+                <article class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex flex-col h-full blog-card group cursor-pointer">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=800&auto=format&fit=crop" alt="DTF vs Sublim" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <span class="text-brand-blue text-[11px] font-bold uppercase tracking-wider mb-2 block">Edukasi Produk</span>
+                    <h3 class="font-serif font-bold text-gray-900 text-xl mb-3 line-clamp-2 leading-snug">
+                        Perbedaan Sablon DTF dan Print Sublimasi: Mana yang Tepat Untukmu?
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-5 line-clamp-3 flex-grow leading-relaxed">
+                        Sering bingung memilih antara DTF atau Sublim? Kenali perbedaan karakter tinta, jenis kain yang cocok, hingga ketahanannya agar pesanan custom apparel kamu hasilnya maksimal.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                        <span class="text-xs text-gray-400 font-medium">10 Agt 2026</span>
+                        <!-- Tombol Bergaya "Pesan" di Katalog -->
+                        <a href="#" class="bg-[#1a1f2e] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 hover:bg-black transition-colors">
+                            Baca <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artikel 2 (Contoh Tips & Perawatan) -->
+                <article class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex flex-col h-full blog-card group cursor-pointer">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-100 relative">
+                        <!-- Label ala "BEST SELLER" di produk -->
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">POPULER</span>
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="Cara merawat kaos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <span class="text-brand-blue text-[11px] font-bold uppercase tracking-wider mb-2 block">Tips & Perawatan</span>
+                    <h3 class="font-serif font-bold text-gray-900 text-xl mb-3 line-clamp-2 leading-snug">
+                        5 Tips Ampuh Merawat Kaos Sablon DTF Agar Awet Bertahun-tahun
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-5 line-clamp-3 flex-grow leading-relaxed">
+                        Punya kaos dengan desain favorit dari Visco Print? Jangan asal cuci! Ikuti panduan cara mencuci dan menyetrika sablon DTF ini agar warnanya tetap cerah dan tidak mudah mengelupas.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                        <span class="text-xs text-gray-400 font-medium">5 Agt 2026</span>
+                        <a href="#" class="bg-[#1a1f2e] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 hover:bg-black transition-colors">
+                            Baca <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artikel 3 (Contoh Peluang Bisnis) -->
+                <article class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex flex-col h-full blog-card group cursor-pointer">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Bisnis Clothing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <span class="text-brand-blue text-[11px] font-bold uppercase tracking-wider mb-2 block">Peluang Bisnis</span>
+                    <h3 class="font-serif font-bold text-gray-900 text-xl mb-3 line-clamp-2 leading-snug">
+                        Mulai Bisnis Clothing Line Sendiri Tanpa Perlu Beli Mesin Cetak
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-5 line-clamp-3 flex-grow leading-relaxed">
+                        Ingin punya brand baju sendiri tapi terhalang modal alat yang mahal? Pelajari sistem kerjasama dengan vendor printing seperti Visco Print untuk mewujudkan brand impianmu.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                        <span class="text-xs text-gray-400 font-medium">28 Jul 2026</span>
+                        <a href="#" class="bg-[#1a1f2e] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 hover:bg-black transition-colors">
+                            Baca <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artikel 4 (Contoh Inspirasi Desain) -->
+                <article class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex flex-col h-full blog-card group cursor-pointer">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-100 relative">
+                         <span class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded">TERBARU</span>
+                        <img src="https://images.unsplash.com/photo-1581077755519-755c91cebb15?q=80&w=800&auto=format&fit=crop" alt="Tote Bag Custom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <span class="text-brand-blue text-[11px] font-bold uppercase tracking-wider mb-2 block">Inspirasi Desain</span>
+                    <h3 class="font-serif font-bold text-gray-900 text-xl mb-3 line-clamp-2 leading-snug">
+                        7 Ide Desain Tote Bag Custom Kekinian untuk Souvenir Acara
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-5 line-clamp-3 flex-grow leading-relaxed">
+                        Bosan dengan souvenir yang itu-itu saja? Tote bag custom print sublim atau DTF dengan desain unik bisa jadi opsi fungsional dan estetik. Intip inspirasinya di sini!
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                        <span class="text-xs text-gray-400 font-medium">15 Jul 2026</span>
+                        <a href="#" class="bg-[#1a1f2e] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 hover:bg-black transition-colors">
+                            Baca <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- Artikel 5 (Contoh Edukasi Bahan) -->
+                <article class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex flex-col h-full blog-card group cursor-pointer">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop" alt="Kain Cotton" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <span class="text-brand-blue text-[11px] font-bold uppercase tracking-wider mb-2 block">Edukasi Produk</span>
+                    <h3 class="font-serif font-bold text-gray-900 text-xl mb-3 line-clamp-2 leading-snug">
+                        Mengenal Jenis Kain Cotton Combed: Mana yang Paling Nyaman?
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-5 line-clamp-3 flex-grow leading-relaxed">
+                        Cotton Combed 20s, 24s, atau 30s? Pahami karakteristik ketebalan kain-kain ini agar sablon DTF kamu menempel dengan sempurna dan nyaman dipakai seharian.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                        <span class="text-xs text-gray-400 font-medium">02 Jul 2026</span>
+                        <a href="#" class="bg-[#1a1f2e] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 hover:bg-black transition-colors">
+                            Baca <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Box Newsletter ala Visco Print -->
+                <article class="bg-brand-dark rounded-[20px] p-8 shadow-sm flex flex-col justify-center text-center h-full relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-blue rounded-full opacity-30 blur-2xl"></div>
+                    <div class="relative z-10">
+                        <span class="material-symbols-outlined text-brand-accent text-5xl mb-4 inline-block">mail</span>
+                        <h3 class="font-serif font-bold text-white text-2xl mb-2">Jangan Lewatkan Promo & Info Terbaru!</h3>
+                        <p class="text-gray-400 text-sm mb-6">
+                            Berlangganan buletin kami untuk mendapatkan tips printing dan penawaran eksklusif dari Visco Print.
+                        </p>
+                        <form onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan info Visco Print!');" class="flex flex-col gap-3">
+                            <input type="email" placeholder="Masukkan Email Anda" required class="w-full px-4 py-3 rounded-lg bg-[#2a3040] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent text-sm">
+                            <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blue-hover text-white font-medium py-3 rounded-lg transition-colors text-sm">
+                                Berlangganan Sekarang
+                            </button>
+                        </form>
+                    </div>
+                </article>
+
+            </div>
+            
+            <!-- PAGINATION -->
+            <div class="mt-12 flex justify-center items-center gap-2">
+                <button class="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-brand-blue transition-colors">
+                    <span class="material-symbols-outlined text-sm">chevron_left</span>
+                </button>
+                <button class="w-10 h-10 rounded-lg bg-brand-dark text-white font-medium text-sm flex items-center justify-center">1</button>
+                <button class="w-10 h-10 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-brand-blue font-medium text-sm flex items-center justify-center transition-colors">2</button>
+                <button class="w-10 h-10 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-brand-blue font-medium text-sm flex items-center justify-center transition-colors">3</button>
+                <button class="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-brand-blue transition-colors">
+                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SIMPLE (Agar relevan dengan desain bersih) -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex flex-col items-center md:items-start">
+                <span class="font-serif text-xl font-bold tracking-wider text-brand-blue leading-none mb-1">VISCO PRINT</span>
+                <p class="text-xs text-gray-400">&copy; 2026 Visco Print. All rights reserved.</p>
+            </div>
+            <div class="flex gap-4 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-brand-blue transition-colors">Instagram</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">WhatsApp</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Shopee</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
