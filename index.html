@@ -1,287 +1,552 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="light scroll-smooth" lang="id">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Visco Print | Precision Industrial Printing</title>
-    
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-blue': '#1a56db', 
-                        'brand-blue-hover': '#1e40af', 
-                        'brand-accent': '#3b82f6', 
-                        'brand-dark': '#1a1f2e', 
-                        'adore-text': '#555555',
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-blue": "#1a56db",
+              "brand-blue-hover": "#1e40af",
+              "brand-accent": "#3b82f6",
+              "brand-dark": "#1a1f2e",
+              "adore-text": "#555555",
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
     <style>
-        .material-symbols-outlined {
-            vertical-align: middle;
-        }
+      .material-symbols-outlined {
+        vertical-align: middle;
+      }
     </style>
-</head>
-<body class="bg-white text-adore-text font-sans antialiased overflow-x-hidden">
-
+  </head>
+  <body
+    class="bg-white text-adore-text font-sans antialiased overflow-x-hidden"
+  >
     <!-- FLOATING CART BUTTON -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="window.location.href='https://www.websitekamu.com/product'" class="relative bg-white text-black p-4 rounded-full shadow-2xl border border-gray-100 flex items-center justify-center hover:scale-105 transition-transform">
-            <span class="material-symbols-outlined text-2xl">shopping_bag</span>
-            <span class="absolute -top-1 -left-1 bg-black text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">1</span>
-        </button>
+      <button
+        onclick="window.location.href = './product.html'"
+        class="relative bg-white text-black p-4 rounded-full shadow-2xl border border-gray-100 flex items-center justify-center hover:scale-105 transition-transform"
+      >
+        <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+        <span
+          class="absolute -top-1 -left-1 bg-black text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
+          >1</span
+        >
+      </button>
     </div>
 
     <!-- HEADER -->
-    <header class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center relative">
-            
-            <!-- Logo Kiri -->
-            <a href="https://www.websitekamu.com/" class="flex flex-col z-10">
-                <span class="font-serif text-xl md:text-2xl lg:text-3xl font-bold tracking-wider text-brand-blue leading-none">VISCO PRINT</span>
-                <span class="text-[7px] md:text-[9px] tracking-[0.25em] text-brand-blue font-sans uppercase mt-1">INDUSTRIAL & DIGITAL PRINT</span>
-            </a>
+    <header
+      class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center relative"
+      >
+        <!-- Logo Kiri -->
+        <a href="./index.html" class="flex flex-col z-10">
+          <span
+            class="font-serif text-xl md:text-2xl lg:text-3xl font-bold tracking-wider text-brand-blue leading-none"
+            >VISCO PRINT</span
+          >
+          <span
+            class="text-[7px] md:text-[9px] tracking-[0.25em] text-brand-blue font-sans uppercase mt-1"
+            >INDUSTRIAL & DIGITAL PRINT</span
+          >
+        </a>
 
-            <!-- Menu Tengah (Desktop) -->
-            <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
-                <a href="./index.html" class="text-brand-accent hover:text-brand-blue transition-colors">Home</a>
-                <a href="./index.html" class="text-brand-blue hover:text-brand-accent transition-colors">Profile</a>
-                <a href="./product.html" class="text-brand-blue hover:text-brand-accent transition-colors">Product</a>
-                <a href="blog.html" class="text-brand-blue hover:text-brand-accent transition-colors">Blog</a>
-                <a href="./contact.html" class="text-brand-blue hover:text-brand-accent transition-colors">Contact</a>
-            </nav>
+        <!-- Menu Tengah (Desktop) -->
+        <nav
+          class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium"
+        >
+          <a
+            href="./index.html"
+            class="text-brand-accent hover:text-brand-blue transition-colors"
+            >Home</a
+          >
+          <a
+            href="./index.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors"
+            >Profile</a
+          >
+          <a
+            href="./product.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors"
+            >Product</a
+          >
+          <a
+            href="blog.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors"
+            >Blog</a
+          >
+          <a
+            href="./contact.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors"
+            >Contact</a
+          >
+        </nav>
 
-            <!-- Cart Kanan & Hamburger Menu Button -->
-            <div class="flex items-center gap-3 z-10">
-                <a href="https://www.websitekamu.com/product" class="flex items-center gap-1 text-brand-blue font-medium text-sm hover:text-brand-accent transition-colors">
-                    <span class="hidden sm:inline">Cart</span>
-                    <span class="material-symbols-outlined text-xl md:text-lg">shopping_cart</span>
-                </a>
-                
-                <!-- Hamburger Button (Mobile Only) -->
-                <button id="mobile-menu-btn" class="md:hidden text-brand-blue focus:outline-none flex items-center justify-center p-1">
-                    <span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
-                </button>
-            </div>
+        <!-- Cart Kanan & Hamburger Menu Button -->
+        <div class="flex items-center gap-3 z-10">
+          <a
+            href="./product.html"
+            class="flex items-center gap-1 text-brand-blue font-medium text-sm hover:text-brand-accent transition-colors"
+          >
+            <span class="hidden sm:inline">Cart</span>
+            <span class="material-symbols-outlined text-xl md:text-lg"
+              >shopping_cart</span
+            >
+          </a>
+
+          <!-- Hamburger Button (Mobile Only) -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-brand-blue focus:outline-none flex items-center justify-center p-1"
+          >
+            <span class="material-symbols-outlined text-2xl" id="menu-icon"
+              >menu</span
+            >
+          </button>
         </div>
+      </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg transition-all duration-300">
-            <nav class="flex flex-col px-6 py-4 gap-4 text-base font-medium">
-                <a href="./index.html" class="text-brand-accent hover:text-brand-blue transition-colors border-b border-gray-50 pb-2">Home</a>
-                <a href="./index.html" class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2">Profile</a>
-                <a href="./product.html" class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2">Product</a>
-                <a href="blog.html" class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2">Blog</a>
-                <a href="./contact.html" class="text-brand-blue hover:text-brand-accent transition-colors">Contact</a>
-            </nav>
-        </div>
+      <!-- Mobile Menu Dropdown -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg transition-all duration-300"
+      >
+        <nav class="flex flex-col px-6 py-4 gap-4 text-base font-medium">
+          <a
+            href="./index.html"
+            class="text-brand-accent hover:text-brand-blue transition-colors border-b border-gray-50 pb-2"
+            >Home</a
+          >
+          <a
+            href="./index.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2"
+            >Profile</a
+          >
+          <a
+            href="./product.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2"
+            >Product</a
+          >
+          <a
+            href="blog.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2"
+            >Blog</a
+          >
+          <a
+            href="./contact.html"
+            class="text-brand-blue hover:text-brand-accent transition-colors"
+            >Contact</a
+          >
+        </nav>
+      </div>
     </header>
 
     <div id="app-content">
-        <div id="home" class="view block">
-            <main>
-                <!-- 1. HERO BANNER SECTION -->
-                <section class="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] bg-gray-100 overflow-hidden">
-                    <!-- Video Background -->
-                    <video autoplay loop muted playsinline class="w-full h-full object-cover object-center">
-                        <!-- Ganti atribut src dengan path video Anda sendiri (misal: ./assets/hero-video.mp4) -->
-                        <source src="./assets/Vid Baru.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung tag video.
-                    </video>
-                    
-                    <!-- Optional Overlay for text readability if needed -->
-                    <div class="absolute inset-0 bg-black/20"></div>
-                </section>
+      <div id="home" class="view block">
+        <main>
+          <!-- 1. HERO BANNER SECTION -->
+          <section
+            class="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] bg-gray-100 overflow-hidden"
+          >
+            <!-- Video Background -->
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              class="w-full h-full object-cover object-center"
+            >
+              <!-- Ganti atribut src dengan path video Anda sendiri (misal: ./assets/hero-video.mp4) -->
+              <source src="./assets/Vid Baru.mp4" type="video/mp4" />
+              Browser Anda tidak mendukung tag video.
+            </video>
 
-                <!-- 2. ABOUT US SECTION -->
-                <section class="py-12 md:py-16 lg:py-24 px-4 md:px-6 max-w-7xl mx-auto">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <!-- Teks Kiri -->
-                        <div>
-                            <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-blue font-medium mb-4 md:mb-6 text-center lg:text-left">About Us</h2>
-                            <p class="text-adore-text leading-relaxed text-sm md:text-base mb-4 md:mb-6 font-light text-justify lg:text-left">
-                                Visco Print selalu menghadirkan cetakan DTF dan produk printing berkualitas premium dengan standar presisi tinggi yang konsisten. Visco Print selalu menggunakan bahan dan tinta terbaik untuk menciptakan warna istimewa, kerapihan yang sempurna, dan daya tahan maksimal. Selain menjaga kualitas hasil cetak, Visco Print juga selalu mengutamakan pengalaman berbelanja yang nyaman, lancar tanpa hambatan. Bersama Visco Print, kualitas bukan hanya sekedar cetakan, tetapi juga tentang kepercayaan yang berkesan.
-                            </p>
-                            <p class="font-semibold text-brand-dark text-sm md:text-base mb-6 md:mb-8 text-center lg:text-left">
-                                Spreading QUALITY in every Print with Visco Print
-                            </p>
-                            
-                            <!-- Tombol -->
-                            <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center lg:justify-start">
-                                <a href="https://www.websitekamu.com/product" class="w-full sm:w-auto text-center bg-brand-blue hover:bg-brand-blue-hover text-white px-6 py-3 rounded text-sm font-medium transition-colors">
-                                    Order Now
-                                </a>
-                                <a href="https://wa.me/6281234567890" target="_blank" class="w-full sm:w-auto text-center bg-brand-dark hover:bg-black text-white px-6 py-3 rounded text-sm font-medium transition-colors">
-                                    Contact Us
-                                </a>
-                            </div>
-                        </div>
+            <!-- Optional Overlay for text readability if needed -->
+            <div class="absolute inset-0 bg-black/20"></div>
+          </section>
 
-                        <!-- 2 Foto Portrait Kanan -->
-                        <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:pl-4">
-                            <!-- Placeholder images -->
-                            <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-md">
-                                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/400x600/1a1f2e/ffffff?text=Process+1'" alt="Visco Print Process 1" class="w-full h-full object-cover">
-                            </div>
-                            <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-md mt-6 sm:mt-8">
-                                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/400x600/1a56db/ffffff?text=Process+2'" alt="Visco Print Process 2" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                    </div>
-                </section>
+          <!-- 2. ABOUT US SECTION -->
+          <section
+            class="py-12 md:py-16 lg:py-24 px-4 md:px-6 max-w-7xl mx-auto"
+          >
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center"
+            >
+              <!-- Teks Kiri -->
+              <div>
+                <h2
+                  class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-blue font-medium mb-4 md:mb-6 text-center lg:text-left"
+                >
+                  About Us
+                </h2>
+                <p
+                  class="text-adore-text leading-relaxed text-sm md:text-base mb-4 md:mb-6 font-light text-justify lg:text-left"
+                >
+                  Visco Print selalu menghadirkan cetakan DTF dan produk
+                  printing berkualitas premium dengan standar presisi tinggi
+                  yang konsisten. Visco Print selalu menggunakan bahan dan tinta
+                  terbaik untuk menciptakan warna istimewa, kerapihan yang
+                  sempurna, dan daya tahan maksimal. Selain menjaga kualitas
+                  hasil cetak, Visco Print juga selalu mengutamakan pengalaman
+                  berbelanja yang nyaman, lancar tanpa hambatan. Bersama Visco
+                  Print, kualitas bukan hanya sekedar cetakan, tetapi juga
+                  tentang kepercayaan yang berkesan.
+                </p>
+                <p
+                  class="font-semibold text-brand-dark text-sm md:text-base mb-6 md:mb-8 text-center lg:text-left"
+                >
+                  Spreading QUALITY in every Print with Visco Print
+                </p>
 
-                <!-- 3. PRODUCT GALLERY GRID -->
-                <section class="py-8 md:py-12 px-4 md:px-6 max-w-7xl mx-auto">
-                    <h2 class="font-serif text-2xl md:text-3xl text-center text-brand-dark mb-8 md:mb-12">Our Masterpieces</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-                        <!-- Placeholder images for gallery -->
-                        <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group">
-                            <img src="img/Cetak DTF.jpeg" onerror="this.src='https://placehold.co/400x533/f3f4f6/1a1f2e?text=T-Shirt+DTF'" alt="Product Showcase 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group">
-                            <img src="./img/Tote bag custom.jpeg" onerror="this.src='https://placehold.co/400x533/f3f4f6/1a56db?text=Tote+Bag'" alt="Product Showcase 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group">
-                            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop" onerror="this.src='https://placehold.co/400x533/f3f4f6/1a1f2e?text=Hoodie'" alt="Product Showcase 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group">
-                            <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=600&auto=format&fit=crop" onerror="this.src='https://placehold.co/400x533/f3f4f6/1a56db?text=Sublimation'" alt="Product Showcase 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                    </div>
-                </section>
+                <!-- Tombol -->
+                <div
+                  class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center lg:justify-start"
+                >
+                  <a
+                    href="./product.html"
+                    class="w-full sm:w-auto text-center bg-brand-blue hover:bg-brand-blue-hover text-white px-6 py-3 rounded text-sm font-medium transition-colors"
+                  >
+                    Order Now
+                  </a>
+                  <a
+                    href="https://wa.me/6282134340609"
+                    target="_blank"
+                    class="w-full sm:w-auto text-center bg-brand-dark hover:bg-black text-white px-6 py-3 rounded text-sm font-medium transition-colors"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
 
-                <!-- 4. SPOTLIGHT FEATURE SECTION -->
-                <section class="py-12 md:py-20 lg:py-24 px-4 md:px-6 max-w-7xl mx-auto bg-gray-50 rounded-[2rem] my-12">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <!-- Foto Kiri -->
-                        <div class="aspect-square sm:aspect-[4/3] md:aspect-[3/4] lg:aspect-square overflow-hidden rounded-2xl shadow-lg">
-                            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x800/1a1f2e/ffffff?text=Fresh+Prints'" alt="Freshly Printed Every Day" class="w-full h-full object-cover">
-                        </div>
+              <!-- 2 Foto Portrait Kanan -->
+              <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:pl-4">
+                <!-- Placeholder images -->
+                <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-md">
+                  <img
+                    src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/400x600/1a1f2e/ffffff?text=Process+1'
+                    "
+                    alt="Visco Print Process 1"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  class="aspect-[3/4] overflow-hidden rounded-lg shadow-md mt-6 sm:mt-8"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/400x600/1a56db/ffffff?text=Process+2'
+                    "
+                    alt="Visco Print Process 2"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
 
-                        <!-- Teks Kanan -->
-                        <div class="text-center lg:text-left px-4 lg:px-8">
-                            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-blue font-bold mb-4 md:mb-6 leading-tight">Precision Printed Every Day</h2>
-                            <p class="text-adore-text leading-relaxed text-sm md:text-base mb-6 md:mb-8 font-light">
-                                Nikmati hasil cetak DTF dan sublimasi kain presisi yang diproduksi setiap hari! Di Visco Print, seluruh pesanan diproses untuk menghadirkan cetakan yang fresh dengan kerapatan warna yang selalu istimewa. Jangan sampai kamu melewatkan keistimewaan kualitas di setiap detailnya! Klik tombol di bawah untuk memesan dan rasakan sendiri ketajaman cetakannya.
-                            </p>
-                            <a href="https://www.websitekamu.com/product" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-3.5 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg">
-                                Order Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </a>
-                        </div>
-                    </div>
-                </section>
+          <!-- 3. PRODUCT GALLERY GRID -->
+          <section class="py-8 md:py-12 px-4 md:px-6 max-w-7xl mx-auto">
+            <h2
+              class="font-serif text-2xl md:text-3xl text-center text-brand-dark mb-8 md:mb-12"
+            >
+              Our Masterpieces
+            </h2>
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+            >
+              <!-- Placeholder images for gallery -->
+              <div
+                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
+              >
+                <img
+                  src="img/Cetak DTF.jpeg"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x533/f3f4f6/1a1f2e?text=T-Shirt+DTF'
+                  "
+                  alt="Product Showcase 1"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div
+                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
+              >
+                <img
+                  src="./img/Tote bag custom.jpeg"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x533/f3f4f6/1a56db?text=Tote+Bag'
+                  "
+                  alt="Product Showcase 2"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div
+                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x533/f3f4f6/1a1f2e?text=Hoodie'
+                  "
+                  alt="Product Showcase 3"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div
+                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=600&auto=format&fit=crop"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x533/f3f4f6/1a56db?text=Sublimation'
+                  "
+                  alt="Product Showcase 4"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
+          </section>
 
-                <!-- 5. FULL WIDTH TEXT BANNER -->
-                <section class="relative w-full py-20 md:py-28 bg-[url('https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-fixed bg-center text-white my-12">
-                    <div class="absolute inset-0 bg-brand-dark/80 mix-blend-multiply"></div>
-                    <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
-                        <span class="material-symbols-outlined text-brand-accent text-5xl mb-4">verified</span>
-                        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-6">Delight in Every Print!</h2>
-                        <p class="text-gray-200 text-base md:text-lg leading-relaxed font-light mb-8">
-                            Kerapihan dan warna merupakan hal utama dalam keindahan setiap hasil cetak. Dari tekstur DTF yang lentur, warna sublimasi yang pekat, dan cita rasa estetika yang tinggi, <strong class="font-semibold text-white">Visco Print</strong> hadir untuk menghadirkan pengalaman cetak yang tak terlupakan yang siap memberikan kepuasan di setiap pesanan.
-                        </p>
-                    </div>
-                </section>
+          <!-- 4. SPOTLIGHT FEATURE SECTION -->
+          <section
+            class="py-12 md:py-20 lg:py-24 px-4 md:px-6 max-w-7xl mx-auto bg-gray-50 rounded-[2rem] my-12"
+          >
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center"
+            >
+              <!-- Foto Kiri -->
+              <div
+                class="aspect-square sm:aspect-[4/3] md:aspect-[3/4] lg:aspect-square overflow-hidden rounded-2xl shadow-lg"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=800&auto=format&fit=crop"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x800/1a1f2e/ffffff?text=Fresh+Prints'
+                  "
+                  alt="Freshly Printed Every Day"
+                  class="w-full h-full object-cover"
+                />
+              </div>
 
-            </main>
-        </div>
+              <!-- Teks Kanan -->
+              <div class="text-center lg:text-left px-4 lg:px-8">
+                <h2
+                  class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-blue font-bold mb-4 md:mb-6 leading-tight"
+                >
+                  Precision Printed Every Day
+                </h2>
+                <p
+                  class="text-adore-text leading-relaxed text-sm md:text-base mb-6 md:mb-8 font-light"
+                >
+                  Nikmati hasil cetak DTF dan sublimasi kain presisi yang
+                  diproduksi setiap hari! Di Visco Print, seluruh pesanan
+                  diproses untuk menghadirkan cetakan yang fresh dengan
+                  kerapatan warna yang selalu istimewa. Jangan sampai kamu
+                  melewatkan keistimewaan kualitas di setiap detailnya! Klik
+                  tombol di bawah untuk memesan dan rasakan sendiri ketajaman
+                  cetakannya.
+                </p>
+                <a
+                  href="./product.html"
+                  class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-3.5 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg"
+                >
+                  Order Now
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_forward</span
+                  >
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. FULL WIDTH TEXT BANNER -->
+          <section
+            class="relative w-full py-20 md:py-28 bg-[url('https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-fixed bg-center text-white my-12"
+          >
+            <div
+              class="absolute inset-0 bg-brand-dark/80 mix-blend-multiply"
+            ></div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+              <span
+                class="material-symbols-outlined text-brand-accent text-5xl mb-4"
+                >verified</span
+              >
+              <h2
+                class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-6"
+              >
+                Delight in Every Print!
+              </h2>
+              <p
+                class="text-gray-200 text-base md:text-lg leading-relaxed font-light mb-8"
+              >
+                Kerapihan dan warna merupakan hal utama dalam keindahan setiap
+                hasil cetak. Dari tekstur DTF yang lentur, warna sublimasi yang
+                pekat, dan cita rasa estetika yang tinggi,
+                <strong class="font-semibold text-white">Visco Print</strong>
+                hadir untuk menghadirkan pengalaman cetak yang tak terlupakan
+                yang siap memberikan kepuasan di setiap pesanan.
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-accent mt-auto">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12">
-                
-                <!-- Brand & Deskripsi -->
-                <div class="flex flex-col items-center md:items-start">
-                    <span class="font-serif text-2xl font-bold tracking-wider text-white leading-none mb-2">VISCO PRINT</span>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">
-                        Industrial & Digital Print solution. Memberikan kualitas premium untuk setiap kebutuhan cetak Anda.
-                    </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors">
-                            <span class="material-symbols-outlined text-xl">photo_camera</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors">
-                            <span class="material-symbols-outlined text-xl">forum</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Tautan Cepat -->
-                <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-serif text-lg font-bold mb-4">Quick Links</h4>
-                    <nav class="flex flex-col gap-3 text-sm text-gray-400">
-                        <a href="#" class="hover:text-white transition-colors">Home</a>
-                        <a href="#" class="hover:text-white transition-colors">Products</a>
-                        <a href="#" class="hover:text-white transition-colors">About Us</a>
-                        <a href="#" class="hover:text-white transition-colors">Contact</a>
-                    </nav>
-                </div>
-
-                <!-- Kontak -->
-                <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-serif text-lg font-bold mb-4">Contact Us</h4>
-                    <ul class="flex flex-col gap-4 text-sm text-gray-400">
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-brand-accent">location_on</span>
-                            <span>Jl. Industri No. 123, Semarang</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-brand-accent">phone</span>
-                            <span>+62 812 3456 7890</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-brand-accent">mail</span>
-                            <span>hello@viscoprint.com</span>
-                        </li>
-                    </ul>
-                </div>
+    <footer
+      class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-accent mt-auto"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12"
+        >
+          <!-- Brand & Deskripsi -->
+          <div class="flex flex-col items-center md:items-start">
+            <span
+              class="font-serif text-2xl font-bold tracking-wider text-white leading-none mb-2"
+              >VISCO PRINT</span
+            >
+            <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">
+              Industrial & Digital Print solution. Memberikan kualitas premium
+              untuk setiap kebutuhan cetak Anda.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"
+                title="Instagram"
+              >
+                <span class="material-symbols-outlined text-xl"
+                  >photo_camera</span
+                >
+              </a>
+              <a
+                href="https://wa.me/6282134340609"
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"
+                title="WhatsApp"
+              >
+                <span class="material-symbols-outlined text-xl">forum</span>
+              </a>
             </div>
+          </div>
 
-            <!-- Copyright -->
-            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-                <p>&copy; 2026 Visco Print. All rights reserved.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </div>
-            </div>
+          <!-- Tautan Cepat -->
+          <div class="flex flex-col items-center md:items-start">
+            <h4 class="font-serif text-lg font-bold mb-4">Quick Links</h4>
+            <nav class="flex flex-col gap-3 text-sm text-gray-400">
+              <a href="./index.html" class="hover:text-white transition-colors"
+                >Home</a
+              >
+              <a href="./product.html" class="hover:text-white transition-colors"
+                >Products</a
+              >
+              <a href="./index.html" class="hover:text-white transition-colors"
+                >About Us</a
+              >
+              <a href="./contact.html" class="hover:text-white transition-colors"
+                >Contact</a
+              >
+            </nav>
+          </div>
+
+          <!-- Kontak -->
+          <div class="flex flex-col items-center md:items-start">
+            <h4 class="font-serif text-lg font-bold mb-4">Contact Us</h4>
+            <ul class="flex flex-col gap-4 text-sm text-gray-400">
+              <li class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-accent"
+                  >location_on</span
+                >
+                <span>Jl. Diponegoro No. 123, Ungaran, Kab. Semarang, Jawa Tengah 50511</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-accent"
+                  >phone</span
+                >
+                <span>+62 821-3434-0609</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-accent"
+                  >mail</span
+                >
+                <span>hello@viscoprint.com</span>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Copyright -->
+        <div
+          class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"
+        >
+          <p>&copy; 2026 Visco Print. All rights reserved.</p>
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-white transition-colors"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-white transition-colors"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIcon = document.getElementById("menu-icon");
 
-            mobileMenuBtn.addEventListener('click', () => {
-                // Toggle kelas hidden pada dropdown
-                mobileMenu.classList.toggle('hidden');
-                
-                // Ubah ikon menu
-                if (mobileMenu.classList.contains('hidden')) {
-                    menuIcon.textContent = 'menu';
-                } else {
-                    menuIcon.textContent = 'close';
-                }
-            });
+        mobileMenuBtn.addEventListener("click", () => {
+          // Toggle kelas hidden pada dropdown
+          mobileMenu.classList.toggle("hidden");
+
+          // Ubah ikon menu
+          if (mobileMenu.classList.contains("hidden")) {
+            menuIcon.textContent = "menu";
+          } else {
+            menuIcon.textContent = "close";
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>
