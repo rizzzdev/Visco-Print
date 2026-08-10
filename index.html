@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
       rel="stylesheet"
     />
     <link
@@ -18,15 +18,21 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              "brand-blue": "#1a56db",
-              "brand-blue-hover": "#1e40af",
-              "brand-accent": "#3b82f6",
-              "brand-dark": "#1a1f2e",
-              "adore-text": "#555555",
+              /* Identitas biru royale — dipertahankan */
+              royal: "#1a56db",
+              royaldeep: "#1e40af",
+              royallight: "#3b82f6",
+              /* Netral mewah */
+              ink: "#141a22",
+              ice: "#f6f8fa",
+              slate: "#6f7882",
             },
             fontFamily: {
               serif: ["Playfair Display", "serif"],
@@ -40,23 +46,92 @@
       .material-symbols-outlined {
         vertical-align: middle;
       }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.01em;
+      }
+      .font-serif {
+        letter-spacing: -0.01em;
+      }
+
+      /* Nav link underline tumbuh halus */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 1px;
+        background: currentColor;
+        transition: width 0.35s ease;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* Reveal on scroll — hanya aktif saat JS berjalan */
+      html.js .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      html.js .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html.js .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* Hover lembut pada gambar galeri */
+      .gallery-img {
+        filter: grayscale(0.35);
+        transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.8s ease;
+      }
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.06);
+        filter: grayscale(0);
+      }
+
+      .btn-arrow .material-symbols-outlined {
+        transition: transform 0.35s ease;
+      }
+      .btn-arrow:hover .material-symbols-outlined {
+        transform: translateX(5px);
+      }
     </style>
   </head>
-  <body
-    class="bg-white text-adore-text font-sans antialiased overflow-x-hidden"
-  >
+  <body class="bg-white text-slate font-sans antialiased overflow-x-hidden">
     <!-- FLOATING CART BUTTON -->
     <div class="fixed bottom-6 right-6 z-50">
-      <button
-        onclick="window.location.href = './product.html'"
-        class="relative bg-white text-black p-4 rounded-full shadow-2xl border border-gray-100 flex items-center justify-center hover:scale-105 transition-transform"
+      <a
+        href="./cart.html"
+        class="group relative flex items-center gap-0 bg-royal text-white pl-5 pr-4 py-3.5 rounded-full border border-white/20 shadow-2xl shadow-royal/40 hover:bg-royaldeep transition-all duration-300 hover:-translate-y-0.5"
       >
-        <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+        <span class="material-symbols-outlined text-xl">shopping_bag</span>
         <span
-          class="absolute -top-1 -left-1 bg-black text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
-          >1</span
+          class="text-[10px] uppercase tracking-[0.2em] opacity-0 w-0 overflow-hidden transition-all duration-300 group-hover:w-16 group-hover:opacity-100 group-hover:ml-2"
+          >Cart</span
         >
-      </button>
+        <span
+          data-cart-badge
+          class="absolute -top-1.5 -left-1.5 bg-white text-royal text-[10px] font-bold min-w-5 h-5 px-1 flex items-center justify-center rounded-full hidden"
+          >0</span
+        >
+      </a>
     </div>
 
     <!-- HEADER -->
@@ -64,67 +139,65 @@
       class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm"
     >
       <div
-        class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center relative"
+        class="max-w-7xl mx-auto px-5 md:px-8 py-5 flex justify-between items-center relative"
       >
         <!-- Logo Kiri -->
         <a href="./index.html" class="flex flex-col z-10">
           <span
-            class="font-serif text-xl md:text-2xl lg:text-3xl font-bold tracking-wider text-brand-blue leading-none"
-            >VISCO PRINT</span
+            class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-royal leading-none"
+            >VISCO&nbsp;PRINT</span
           >
           <span
-            class="text-[7px] md:text-[9px] tracking-[0.25em] text-brand-blue font-sans uppercase mt-1"
-            >INDUSTRIAL & DIGITAL PRINT</span
+            class="text-[7px] md:text-[8px] tracking-[0.5em] text-royal/70 font-sans uppercase mt-2"
+            >Industrial &amp; Digital Print</span
           >
         </a>
 
         <!-- Menu Tengah (Desktop) -->
         <nav
-          class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium"
+          class="hidden md:flex items-center gap-10 text-[12px] uppercase tracking-[0.22em] font-medium"
         >
+          <a href="./index.html" class="nav-link active text-royal">Home</a>
           <a
-            href="./index.html"
-            class="text-brand-accent hover:text-brand-blue transition-colors"
-            >Home</a
-          >
-          <a
-            href="./index.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors"
+            href="#about"
+            class="nav-link text-slate hover:text-royal transition-colors"
             >Profile</a
           >
           <a
             href="./product.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors"
+            class="nav-link text-slate hover:text-royal transition-colors"
             >Product</a
           >
           <a
             href="blog.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors"
+            class="nav-link text-slate hover:text-royal transition-colors"
             >Blog</a
           >
           <a
             href="./contact.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors"
+            class="nav-link text-slate hover:text-royal transition-colors"
             >Contact</a
           >
         </nav>
 
-        <!-- Cart Kanan & Hamburger Menu Button -->
-        <div class="flex items-center gap-3 z-10">
+        <!-- Cart Kanan & Hamburger -->
+        <div class="flex items-center gap-5 z-10">
           <a
-            href="./product.html"
-            class="flex items-center gap-1 text-brand-blue font-medium text-sm hover:text-brand-accent transition-colors"
+            href="./cart.html"
+            class="relative flex items-center gap-2 text-royal text-[11px] uppercase tracking-[0.22em] font-medium hover:text-royaldeep transition-colors"
           >
             <span class="hidden sm:inline">Cart</span>
-            <span class="material-symbols-outlined text-xl md:text-lg"
-              >shopping_cart</span
+            <span class="material-symbols-outlined text-lg">shopping_cart</span>
+            <span
+              data-cart-badge
+              class="absolute -top-2 -right-3 bg-royal text-white text-[9px] font-bold min-w-4 h-4 px-0.5 flex items-center justify-center rounded-full hidden"
+              >0</span
             >
           </a>
 
-          <!-- Hamburger Button (Mobile Only) -->
           <button
             id="mobile-menu-btn"
-            class="md:hidden text-brand-blue focus:outline-none flex items-center justify-center p-1"
+            class="md:hidden text-royal focus:outline-none flex items-center justify-center p-1"
           >
             <span class="material-symbols-outlined text-2xl" id="menu-icon"
               >menu</span
@@ -133,35 +206,37 @@
         </div>
       </div>
 
-      <!-- Mobile Menu Dropdown -->
+      <!-- Mobile Menu -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg transition-all duration-300"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg"
       >
-        <nav class="flex flex-col px-6 py-4 gap-4 text-base font-medium">
+        <nav
+          class="flex flex-col px-8 py-6 gap-5 text-sm uppercase tracking-[0.25em] font-medium"
+        >
           <a
             href="./index.html"
-            class="text-brand-accent hover:text-brand-blue transition-colors border-b border-gray-50 pb-2"
+            class="text-royal border-b border-gray-100 pb-3"
             >Home</a
           >
           <a
-            href="./index.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2"
+            href="#about"
+            class="text-slate hover:text-royal transition-colors border-b border-gray-100 pb-3"
             >Profile</a
           >
           <a
             href="./product.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2"
+            class="text-slate hover:text-royal transition-colors border-b border-gray-100 pb-3"
             >Product</a
           >
           <a
             href="blog.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors border-b border-gray-50 pb-2"
+            class="text-slate hover:text-royal transition-colors border-b border-gray-100 pb-3"
             >Blog</a
           >
           <a
             href="./contact.html"
-            class="text-brand-blue hover:text-brand-accent transition-colors"
+            class="text-slate hover:text-royal transition-colors"
             >Contact</a
           >
         </nav>
@@ -171,9 +246,9 @@
     <div id="app-content">
       <div id="home" class="view block">
         <main>
-          <!-- 1. HERO BANNER SECTION -->
+          <!-- ============ 1. HERO ============ -->
           <section
-            class="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] bg-gray-100 overflow-hidden"
+            class="relative w-full min-h-[95vh] bg-ink overflow-hidden flex items-center"
           >
             <!-- Video Background -->
             <video
@@ -181,213 +256,379 @@
               loop
               muted
               playsinline
-              class="w-full h-full object-cover object-center"
+              class="absolute inset-0 w-full h-full object-cover object-center"
             >
-              <!-- Ganti atribut src dengan path video Anda sendiri (misal: ./assets/hero-video.mp4) -->
               <source src="./assets/Vid Baru.mp4" type="video/mp4" />
+              <source src="./assets/vid.mp4" type="video/mp4" />
+              <source src="./assets/baru.mp4" type="video/mp4" />
               Browser Anda tidak mendukung tag video.
             </video>
 
-            <!-- Optional Overlay for text readability if needed -->
-            <div class="absolute inset-0 bg-black/20"></div>
+            <!-- Overlay gradasi navy + cahaya biru royale -->
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/60 to-ink/95"
+            ></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-royal/40 via-transparent to-transparent"
+            ></div>
+
+            <!-- Konten Hero -->
+            <div
+              class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 py-32 md:py-40"
+            >
+              <div class="max-w-3xl reveal in">
+                <!-- Eyebrow -->
+                <div class="flex items-center gap-5 mb-8">
+                  <span class="h-px w-12 bg-royallight/60"></span>
+                  <span
+                    class="text-royallight text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium"
+                    >Industrial &amp; Digital Printing · Ungaran</span
+                  >
+                  <span class="h-px w-12 bg-royallight/60 hidden sm:block"></span>
+                </div>
+
+                <!-- Headline -->
+                <h1
+                  class="font-serif text-white font-medium leading-[1.12] text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[4.75rem] mb-8"
+                >
+                  Cetak <em class="italic text-royallight">Premium</em>,<br />
+                  Presisi &amp; Tahan Lama
+                </h1>
+
+                <!-- Subheadline -->
+                <p
+                  class="text-white/70 text-base md:text-lg lg:text-xl leading-relaxed font-light mb-11 max-w-2xl"
+                >
+                  Dari
+                  <span class="text-white">sablon DTF</span>,
+                  <span class="text-white">print sublimasi</span>, hingga
+                  <span class="text-white">custom apparel</span> — Visco Print
+                  menghadirkan hasil cetak berkualitas studio dengan warna
+                  tajam, detail sempurna, dan daya tahan maksimal. Wujudkan
+                  desain &amp; brand impianmu hari ini.
+                </p>
+
+                <!-- CTA -->
+                <div
+                  class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mb-14"
+                >
+                  <a
+                    href="./product.html"
+                    class="btn-arrow inline-flex items-center justify-center gap-3 bg-royal hover:bg-royaldeep text-white px-10 py-4 rounded-full text-[11px] uppercase tracking-[0.25em] font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-royal/40"
+                  >
+                    Lihat Katalog
+                    <span class="material-symbols-outlined text-base"
+                      >arrow_forward</span
+                    >
+                  </a>
+                  <a
+                    href="https://wa.me/6282134340609?text=Halo%20Visco%20Print%2C%20saya%20ingin%20konsultasi%20desain%20dan%20harga%20cetak.%20Mohon%20informasinya%20ya."
+                    target="_blank"
+                    class="btn-arrow inline-flex items-center justify-center gap-3 border border-white/25 text-white hover:bg-white/10 px-10 py-4 rounded-full text-[11px] uppercase tracking-[0.25em] font-medium transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    Konsultasi Gratis
+                    <span class="material-symbols-outlined text-base"
+                      >forum</span
+                    >
+                  </a>
+                </div>
+
+                <!-- Keunggulan -->
+                <div
+                  class="flex flex-wrap gap-x-10 gap-y-4 mb-14 text-[13px] text-white/60"
+                >
+                  <span class="flex items-center gap-2.5">
+                    <span
+                      class="material-symbols-outlined text-base text-royallight"
+                      >check</span
+                    >
+                    Bahan &amp; tinta premium
+                  </span>
+                  <span class="flex items-center gap-2.5">
+                    <span
+                      class="material-symbols-outlined text-base text-royallight"
+                      >check</span
+                    >
+                    Warna tajam &amp; awet
+                  </span>
+                  <span class="flex items-center gap-2.5">
+                    <span
+                      class="material-symbols-outlined text-base text-royallight"
+                      >check</span
+                    >
+                    Proses 24–48 jam
+                  </span>
+                  <span class="flex items-center gap-2.5">
+                    <span
+                      class="material-symbols-outlined text-base text-royallight"
+                      >check</span
+                    >
+                    Kirim seluruh Indonesia
+                  </span>
+                </div>
+
+                <!-- Statistik -->
+                <div
+                  class="grid grid-cols-3 gap-8 max-w-xl border-t border-white/10 pt-9"
+                >
+                  <div>
+                    <p
+                      class="font-serif text-3xl md:text-4xl font-medium text-white"
+                    >
+                      2.000<span class="text-royallight">+</span>
+                    </p>
+                    <p
+                      class="text-white/40 text-[10px] md:text-[11px] uppercase tracking-[0.25em] mt-2"
+                    >
+                      Desain Dicetak
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      class="font-serif text-3xl md:text-4xl font-medium text-white"
+                    >
+                      500<span class="text-royallight">+</span>
+                    </p>
+                    <p
+                      class="text-white/40 text-[10px] md:text-[11px] uppercase tracking-[0.25em] mt-2"
+                    >
+                      Klien Puas
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      class="font-serif text-3xl md:text-4xl font-medium text-white"
+                    >
+                      24–48
+                    </p>
+                    <p
+                      class="text-white/40 text-[10px] md:text-[11px] uppercase tracking-[0.25em] mt-2"
+                    >
+                      Jam Proses
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a
+              href="#about"
+              class="absolute bottom-7 left-1/2 -translate-x-1/2 text-white/40 hover:text-royallight flex flex-col items-center gap-2 z-10 transition-colors"
+            >
+              <span class="text-[8px] tracking-[0.45em] uppercase"
+                >Scroll</span
+              >
+              <span class="material-symbols-outlined animate-bounce text-sm"
+                >keyboard_double_arrow_down</span
+              >
+            </a>
           </section>
 
-          <!-- 2. ABOUT US SECTION -->
+          <!-- ============ 2. ABOUT ============ -->
           <section
-            class="py-12 md:py-16 lg:py-24 px-4 md:px-6 max-w-7xl mx-auto"
+            id="about"
+            class="py-24 md:py-36 px-5 md:px-8 max-w-7xl mx-auto scroll-mt-24"
           >
             <div
-              class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center"
+              class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center"
             >
               <!-- Teks Kiri -->
-              <div>
+              <div class="reveal">
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="h-px w-10 bg-royal/30"></span>
+                  <span
+                    class="text-royal text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium"
+                    >01 — Tentang Kami</span
+                  >
+                </div>
                 <h2
-                  class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-blue font-medium mb-4 md:mb-6 text-center lg:text-left"
+                  class="font-serif text-3xl md:text-5xl text-ink font-medium leading-tight mb-8"
                 >
-                  About Us
+                  Spreading Quality in
+                  <em class="italic text-royal">Every Print</em>
                 </h2>
                 <p
-                  class="text-adore-text leading-relaxed text-sm md:text-base mb-4 md:mb-6 font-light text-justify lg:text-left"
+                  class="text-slate leading-[1.9] text-sm md:text-[15px] font-light mb-7"
                 >
                   Visco Print selalu menghadirkan cetakan DTF dan produk
                   printing berkualitas premium dengan standar presisi tinggi
                   yang konsisten. Visco Print selalu menggunakan bahan dan tinta
                   terbaik untuk menciptakan warna istimewa, kerapihan yang
-                  sempurna, dan daya tahan maksimal. Selain menjaga kualitas
-                  hasil cetak, Visco Print juga selalu mengutamakan pengalaman
-                  berbelanja yang nyaman, lancar tanpa hambatan. Bersama Visco
-                  Print, kualitas bukan hanya sekedar cetakan, tetapi juga
-                  tentang kepercayaan yang berkesan.
+                  sempurna, dan daya tahan maksimal.
                 </p>
                 <p
-                  class="font-semibold text-brand-dark text-sm md:text-base mb-6 md:mb-8 text-center lg:text-left"
+                  class="text-slate leading-[1.9] text-sm md:text-[15px] font-light mb-10"
                 >
-                  Spreading QUALITY in every Print with Visco Print
+                  Selain menjaga kualitas hasil cetak, Visco Print juga selalu
+                  mengutamakan pengalaman berbelanja yang nyaman dan lancar
+                  tanpa hambatan. Bersama Visco Print, kualitas bukan hanya
+                  sekedar cetakan — tetapi juga tentang kepercayaan yang
+                  berkesan.
                 </p>
 
-                <!-- Tombol -->
                 <div
-                  class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center lg:justify-start"
+                  class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5"
                 >
                   <a
                     href="./product.html"
-                    class="w-full sm:w-auto text-center bg-brand-blue hover:bg-brand-blue-hover text-white px-6 py-3 rounded text-sm font-medium transition-colors"
+                    class="btn-arrow inline-flex items-center justify-center gap-3 bg-royal hover:bg-royaldeep text-white px-10 py-4 rounded-full text-[11px] uppercase tracking-[0.25em] font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md shadow-royal/25"
                   >
                     Order Now
+                    <span class="material-symbols-outlined text-base"
+                      >arrow_forward</span
+                    >
                   </a>
                   <a
                     href="https://wa.me/6282134340609"
                     target="_blank"
-                    class="w-full sm:w-auto text-center bg-brand-dark hover:bg-black text-white px-6 py-3 rounded text-sm font-medium transition-colors"
+                    class="inline-flex items-center gap-3 border-b border-royal/40 pb-1.5 text-royal text-[11px] uppercase tracking-[0.25em] font-medium hover:border-royal hover:gap-5 transition-all duration-300"
                   >
                     Contact Us
+                    <span class="material-symbols-outlined text-base"
+                      >arrow_outward</span
+                    >
                   </a>
                 </div>
               </div>
 
               <!-- 2 Foto Portrait Kanan -->
-              <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:pl-4">
-                <!-- Placeholder images -->
-                <div class="aspect-[3/4] overflow-hidden rounded-lg shadow-md">
+              <div class="grid grid-cols-2 gap-4 sm:gap-6 reveal">
+                <div
+                  class="aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-ink/10"
+                >
                   <img
                     src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop"
-                    onerror="
-                      this.src =
-                        'https://placehold.co/400x600/1a1f2e/ffffff?text=Process+1'
-                    "
+                    onerror="this.src = 'https://placehold.co/400x600/1a56db/ffffff?text=Process+1'"
                     alt="Visco Print Process 1"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover gallery-img"
                   />
                 </div>
                 <div
-                  class="aspect-[3/4] overflow-hidden rounded-lg shadow-md mt-6 sm:mt-8"
+                  class="aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-ink/10 mt-10 lg:mt-14"
                 >
                   <img
                     src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop"
-                    onerror="
-                      this.src =
-                        'https://placehold.co/400x600/1a56db/ffffff?text=Process+2'
-                    "
+                    onerror="this.src = 'https://placehold.co/400x600/141a22/ffffff?text=Process+2'"
                     alt="Visco Print Process 2"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover gallery-img"
                   />
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- 3. PRODUCT GALLERY GRID -->
-          <section class="py-8 md:py-12 px-4 md:px-6 max-w-7xl mx-auto">
-            <h2
-              class="font-serif text-2xl md:text-3xl text-center text-brand-dark mb-8 md:mb-12"
-            >
-              Our Masterpieces
-            </h2>
-            <div
-              class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
-            >
-              <!-- Placeholder images for gallery -->
-              <div
-                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
-              >
-                <img
-                  src="img/Cetak DTF.jpeg"
-                  onerror="
-                    this.src =
-                      'https://placehold.co/400x533/f3f4f6/1a1f2e?text=T-Shirt+DTF'
-                  "
-                  alt="Product Showcase 1"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+          <!-- ============ 3. GALLERY ============ -->
+          <section class="py-24 md:py-36 bg-ice">
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+              <div class="text-center max-w-xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                  <span class="h-px w-10 bg-royal/30"></span>
+                  <span
+                    class="text-royal text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium"
+                    >02 — Koleksi</span
+                  >
+                  <span class="h-px w-10 bg-royal/30"></span>
+                </div>
+                <h2
+                  class="font-serif text-3xl md:text-5xl text-ink font-medium leading-tight"
+                >
+                  Our <em class="italic text-royal">Masterpieces</em>
+                </h2>
               </div>
-              <div
-                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
-              >
-                <img
-                  src="./img/Tote bag custom.jpeg"
-                  onerror="
-                    this.src =
-                      'https://placehold.co/400x533/f3f4f6/1a56db?text=Tote+Bag'
-                  "
-                  alt="Product Showcase 2"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div
-                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop"
-                  onerror="
-                    this.src =
-                      'https://placehold.co/400x533/f3f4f6/1a1f2e?text=Hoodie'
-                  "
-                  alt="Product Showcase 3"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div
-                class="aspect-[3/4] overflow-hidden rounded-lg shadow-sm group"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=600&auto=format&fit=crop"
-                  onerror="
-                    this.src =
-                      'https://placehold.co/400x533/f3f4f6/1a56db?text=Sublimation'
-                  "
-                  alt="Product Showcase 4"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div
+                  class="gallery-item aspect-[3/4] overflow-hidden rounded-xl ring-1 ring-ink/5 reveal"
+                >
+                  <img
+                    src="img/Cetak DTF.jpeg"
+                    onerror="this.src = 'https://placehold.co/400x533/f6f8fa/1a56db?text=T-Shirt+DTF'"
+                    alt="Cetak DTF"
+                    class="w-full h-full object-cover gallery-img"
+                  />
+                </div>
+                <div
+                  class="gallery-item aspect-[3/4] overflow-hidden rounded-xl ring-1 ring-ink/5 reveal"
+                >
+                  <img
+                    src="./img/Tote bag custom.jpeg"
+                    onerror="this.src = 'https://placehold.co/400x533/f6f8fa/141a22?text=Tote+Bag'"
+                    alt="Tote Bag Custom"
+                    class="w-full h-full object-cover gallery-img"
+                  />
+                </div>
+                <div
+                  class="gallery-item aspect-[3/4] overflow-hidden rounded-xl ring-1 ring-ink/5 reveal"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop"
+                    onerror="this.src = 'https://placehold.co/400x533/f6f8fa/1a56db?text=Hoodie'"
+                    alt="Hoodie Custom"
+                    class="w-full h-full object-cover gallery-img"
+                  />
+                </div>
+                <div
+                  class="gallery-item aspect-[3/4] overflow-hidden rounded-xl ring-1 ring-ink/5 reveal"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=600&auto=format&fit=crop"
+                    onerror="this.src = 'https://placehold.co/400x533/f6f8fa/141a22?text=Sublimation'"
+                    alt="Print Sublimasi"
+                    class="w-full h-full object-cover gallery-img"
+                  />
+                </div>
               </div>
             </div>
           </section>
 
-          <!-- 4. SPOTLIGHT FEATURE SECTION -->
-          <section
-            class="py-12 md:py-20 lg:py-24 px-4 md:px-6 max-w-7xl mx-auto bg-gray-50 rounded-[2rem] my-12"
-          >
+          <!-- ============ 4. SPOTLIGHT ============ -->
+          <section class="py-24 md:py-36 px-5 md:px-8 max-w-7xl mx-auto">
             <div
-              class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center"
+              class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center"
             >
               <!-- Foto Kiri -->
               <div
-                class="aspect-square sm:aspect-[4/3] md:aspect-[3/4] lg:aspect-square overflow-hidden rounded-2xl shadow-lg"
+                class="aspect-square sm:aspect-[4/3] lg:aspect-square overflow-hidden rounded-3xl ring-1 ring-ink/10 reveal"
               >
                 <img
                   src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=800&auto=format&fit=crop"
-                  onerror="
-                    this.src =
-                      'https://placehold.co/800x800/1a1f2e/ffffff?text=Fresh+Prints'
-                  "
+                  onerror="this.src = 'https://placehold.co/800x800/1a56db/ffffff?text=Fresh+Prints'"
                   alt="Freshly Printed Every Day"
                   class="w-full h-full object-cover"
                 />
               </div>
 
               <!-- Teks Kanan -->
-              <div class="text-center lg:text-left px-4 lg:px-8">
+              <div class="lg:pl-6 reveal">
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="h-px w-10 bg-royal/30"></span>
+                  <span
+                    class="text-royal text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium"
+                    >03 — Kualitas</span
+                  >
+                </div>
                 <h2
-                  class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-blue font-bold mb-4 md:mb-6 leading-tight"
+                  class="font-serif text-3xl md:text-5xl text-ink font-medium leading-tight mb-8"
                 >
-                  Precision Printed Every Day
+                  Precision Printed
+                  <em class="italic text-royal">Every Day</em>
                 </h2>
                 <p
-                  class="text-adore-text leading-relaxed text-sm md:text-base mb-6 md:mb-8 font-light"
+                  class="text-slate leading-[1.9] text-sm md:text-[15px] font-light mb-10"
                 >
                   Nikmati hasil cetak DTF dan sublimasi kain presisi yang
-                  diproduksi setiap hari! Di Visco Print, seluruh pesanan
-                  diproses untuk menghadirkan cetakan yang fresh dengan
-                  kerapatan warna yang selalu istimewa. Jangan sampai kamu
-                  melewatkan keistimewaan kualitas di setiap detailnya! Klik
-                  tombol di bawah untuk memesan dan rasakan sendiri ketajaman
-                  cetakannya.
+                  diproduksi setiap hari! Seluruh pesanan diproses untuk
+                  menghadirkan cetakan yang fresh dengan kerapatan warna yang
+                  selalu istimewa. Jangan sampai kamu melewatkan keistimewaan
+                  kualitas di setiap detailnya.
                 </p>
                 <a
                   href="./product.html"
-                  class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-3.5 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg"
+                  class="inline-flex items-center gap-3 border-b border-royal/40 pb-1.5 text-royal text-[11px] uppercase tracking-[0.25em] font-medium hover:border-royal hover:gap-5 transition-all duration-300"
                 >
-                  Order Now
-                  <span class="material-symbols-outlined text-sm"
+                  Order Sekarang
+                  <span class="material-symbols-outlined text-base"
                     >arrow_forward</span
                   >
                 </a>
@@ -395,32 +636,50 @@
             </div>
           </section>
 
-          <!-- 5. FULL WIDTH TEXT BANNER -->
-          <section
-            class="relative w-full py-20 md:py-28 bg-[url('https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-fixed bg-center text-white my-12"
-          >
+          <!-- ============ 5. FULL WIDTH BANNER ============ -->
+          <section class="relative w-full py-28 md:py-40 bg-ink overflow-hidden">
+            <!-- Tekstur halus -->
             <div
-              class="absolute inset-0 bg-brand-dark/80 mix-blend-multiply"
+              class="absolute inset-0 opacity-[0.06]"
+              style="
+                background-image: radial-gradient(
+                  circle at 1px 1px,
+                  #9fb2c6 1px,
+                  transparent 0
+                );
+                background-size: 28px 28px;
+              "
             ></div>
-            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-ink via-royal/25 to-ink"
+            ></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center px-6 reveal">
               <span
-                class="material-symbols-outlined text-brand-accent text-5xl mb-4"
+                class="material-symbols-outlined text-royallight text-4xl mb-8 inline-block"
                 >verified</span
               >
+              <div class="flex items-center justify-center gap-4 mb-7">
+                <span class="h-px w-12 bg-royallight/40"></span>
+                <span
+                  class="text-royallight/80 text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium"
+                  >04 — Janji Kami</span
+                >
+                <span class="h-px w-12 bg-royallight/40"></span>
+              </div>
               <h2
-                class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-6"
+                class="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-medium leading-tight mb-8"
               >
-                Delight in Every Print!
+                Delight in <em class="italic text-royallight">Every Print</em>!
               </h2>
               <p
-                class="text-gray-200 text-base md:text-lg leading-relaxed font-light mb-8"
+                class="text-white/60 text-base md:text-lg leading-relaxed font-light max-w-2xl mx-auto"
               >
                 Kerapihan dan warna merupakan hal utama dalam keindahan setiap
                 hasil cetak. Dari tekstur DTF yang lentur, warna sublimasi yang
-                pekat, dan cita rasa estetika yang tinggi,
-                <strong class="font-semibold text-white">Visco Print</strong>
-                hadir untuk menghadirkan pengalaman cetak yang tak terlupakan
-                yang siap memberikan kepuasan di setiap pesanan.
+                pekat, hingga cita rasa estetika yang tinggi — Visco Print hadir
+                untuk menghadirkan pengalaman cetak yang tak terlupakan dan
+                siap memberikan kepuasan di setiap pesanan.
               </p>
             </div>
           </section>
@@ -430,80 +689,105 @@
 
     <!-- FOOTER -->
     <footer
-      class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-accent mt-auto"
+      class="bg-ink text-white pt-20 pb-10 border-t-2 border-royal"
     >
-      <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-7xl mx-auto px-6 md:px-8">
         <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12"
+          class="grid grid-cols-1 md:grid-cols-3 gap-14 text-center md:text-left mb-14"
         >
           <!-- Brand & Deskripsi -->
           <div class="flex flex-col items-center md:items-start">
             <span
-              class="font-serif text-2xl font-bold tracking-wider text-white leading-none mb-2"
-              >VISCO PRINT</span
+              class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-royallight leading-none mb-5"
+              >VISCO&nbsp;PRINT</span
             >
-            <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">
-              Industrial & Digital Print solution. Memberikan kualitas premium
-              untuk setiap kebutuhan cetak Anda.
+            <p
+              class="text-white/50 text-sm mb-7 leading-relaxed max-w-xs font-light"
+            >
+              Industrial &amp; Digital Print solution. Memberikan kualitas
+              premium untuk setiap kebutuhan cetak Anda.
             </p>
-            <div class="flex gap-4">
+            <div class="flex gap-3">
               <a
                 href="#"
-                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"
+                class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:border-royallight hover:text-royallight transition-colors"
                 title="Instagram"
               >
-                <span class="material-symbols-outlined text-xl"
+                <span class="material-symbols-outlined text-lg"
                   >photo_camera</span
                 >
               </a>
               <a
                 href="https://wa.me/6282134340609"
                 target="_blank"
-                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"
+                class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:border-royallight hover:text-royallight transition-colors"
                 title="WhatsApp"
               >
-                <span class="material-symbols-outlined text-xl">forum</span>
+                <span class="material-symbols-outlined text-lg">forum</span>
               </a>
             </div>
           </div>
 
           <!-- Tautan Cepat -->
           <div class="flex flex-col items-center md:items-start">
-            <h4 class="font-serif text-lg font-bold mb-4">Quick Links</h4>
-            <nav class="flex flex-col gap-3 text-sm text-gray-400">
-              <a href="./index.html" class="hover:text-white transition-colors"
-                >Home</a
+            <h4
+              class="text-[11px] uppercase tracking-[0.35em] text-white/40 font-medium mb-7"
+            >
+              Quick Links
+            </h4>
+            <nav class="flex flex-col gap-4 text-sm text-white/60">
+              <a
+                href="./index.html"
+                class="hover:text-royallight transition-colors inline-flex items-center gap-2"
               >
-              <a href="./product.html" class="hover:text-white transition-colors"
-                >Products</a
+                <span class="h-px w-3 bg-royallight/50"></span>Home
+              </a>
+              <a
+                href="./product.html"
+                class="hover:text-royallight transition-colors inline-flex items-center gap-2"
               >
-              <a href="./index.html" class="hover:text-white transition-colors"
-                >About Us</a
+                <span class="h-px w-3 bg-royallight/50"></span>Products
+              </a>
+              <a
+                href="#about"
+                class="hover:text-royallight transition-colors inline-flex items-center gap-2"
               >
-              <a href="./contact.html" class="hover:text-white transition-colors"
-                >Contact</a
+                <span class="h-px w-3 bg-royallight/50"></span>About Us
+              </a>
+              <a
+                href="./contact.html"
+                class="hover:text-royallight transition-colors inline-flex items-center gap-2"
               >
+                <span class="h-px w-3 bg-royallight/50"></span>Contact
+              </a>
             </nav>
           </div>
 
           <!-- Kontak -->
           <div class="flex flex-col items-center md:items-start">
-            <h4 class="font-serif text-lg font-bold mb-4">Contact Us</h4>
-            <ul class="flex flex-col gap-4 text-sm text-gray-400">
-              <li class="flex items-center gap-3">
-                <span class="material-symbols-outlined text-brand-accent"
+            <h4
+              class="text-[11px] uppercase tracking-[0.35em] text-white/40 font-medium mb-7"
+            >
+              Contact Us
+            </h4>
+            <ul class="flex flex-col gap-5 text-sm text-white/60 font-light">
+              <li class="flex items-center gap-3.5 text-left">
+                <span class="material-symbols-outlined text-royallight"
                   >location_on</span
                 >
-                <span>Jl. Diponegoro No. 123, Ungaran, Kab. Semarang, Jawa Tengah 50511</span>
+                <span
+                  >Jl. Diponegoro No. 123, Ungaran, Kab. Semarang, Jawa Tengah
+                  50511</span
+                >
               </li>
-              <li class="flex items-center gap-3">
-                <span class="material-symbols-outlined text-brand-accent"
+              <li class="flex items-center gap-3.5">
+                <span class="material-symbols-outlined text-royallight"
                   >phone</span
                 >
                 <span>+62 821-3434-0609</span>
               </li>
-              <li class="flex items-center gap-3">
-                <span class="material-symbols-outlined text-brand-accent"
+              <li class="flex items-center gap-3.5">
+                <span class="material-symbols-outlined text-royallight"
                   >mail</span
                 >
                 <span>hello@viscoprint.com</span>
@@ -514,10 +798,10 @@
 
         <!-- Copyright -->
         <div
-          class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"
+          class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.25em] text-white/45"
         >
           <p>&copy; 2026 Visco Print. All rights reserved.</p>
-          <div class="flex gap-4">
+          <div class="flex gap-8">
             <a href="#" class="hover:text-white transition-colors"
               >Privacy Policy</a
             >
@@ -529,6 +813,7 @@
       </div>
     </footer>
 
+    <script src="js/cart.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const mobileMenuBtn = document.getElementById("mobile-menu-btn");
@@ -536,16 +821,34 @@
         const menuIcon = document.getElementById("menu-icon");
 
         mobileMenuBtn.addEventListener("click", () => {
-          // Toggle kelas hidden pada dropdown
           mobileMenu.classList.toggle("hidden");
-
-          // Ubah ikon menu
-          if (mobileMenu.classList.contains("hidden")) {
-            menuIcon.textContent = "menu";
-          } else {
-            menuIcon.textContent = "close";
-          }
+          menuIcon.textContent = mobileMenu.classList.contains("hidden")
+            ? "menu"
+            : "close";
         });
+
+        // Tutup menu otomatis saat link diklik
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            menuIcon.textContent = "menu";
+          });
+        });
+
+        // Reveal on scroll
+        const revealEls = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        revealEls.forEach((el) => observer.observe(el));
       });
     </script>
   </body>
