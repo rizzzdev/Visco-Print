@@ -31,37 +31,42 @@ function check(name, cond) {
 
 console.log("== Uji 1: add + qty merge + total ==");
 V.clear();
-V.add({ id: "1", name: "Cetak Sablon DTF", price: 35000, unit: "A3", image: "x", qty: 3 });
-V.add({ id: "2", name: "Kaos Custom DTF", price: 75000, unit: "pcs", image: "x", qty: 1 });
-V.add({ id: "1", name: "Cetak Sablon DTF", price: 35000, unit: "A3", image: "x", qty: 2 }); // merge -> qty 5
+// ID dan Harga DISESUAIKAN dengan product.html asli (DTF A3 = 30.000)
+V.add({ id: "1", name: "Cetak Sablon DTF", price: 30000, unit: "A3", image: "x", qty: 3 });
+// ID diubah menjadi "3" menyesuaikan produk asli Kaos Custom (Harga = 75.000)
+V.add({ id: "3", name: "Kaos Custom DTF", price: 75000, unit: "pcs", image: "x", qty: 1 });
+V.add({ id: "1", name: "Cetak Sablon DTF", price: 30000, unit: "A3", image: "x", qty: 2 }); // merge -> qty 5
 check("count() = 6 (3+2+1)", V.count() === 6);
-check("total() = 3*35000*? -> 5*35000 + 75000 = 250000", V.total() === 5 * 35000 + 75000);
+// Hitungan: (5 x 30.000) + (1 x 75.000) = 150.000 + 75.000 = 225.000
+check("total() = 5*30000 + 75000 = 225000", V.total() === 5 * 30000 + 75000);
 check("item 1 qty = 5", V.get()[0].qty === 5);
 
 console.log("== Uji 2: setQty / remove / min-qty ==");
-V.setQty("2", 4);
-check("setQty('2',4) -> qty 4", V.get().find(i => i.id === "2").qty === 4);
+V.setQty("3", 4);
+check("setQty('3',4) -> qty 4", V.get().find(i => i.id === "3").qty === 4);
 V.setQty("1", 0); // <=0 harus hapus
 check("setQty 0 menghapus item", V.get().length === 1);
-V.remove("2");
+V.remove("3");
 check("remove -> kosong", V.get().length === 0);
 check("count 0", V.count() === 0);
 
 console.log("== Uji 3: format Rupiah ==");
-check("formatRupiah(35000) = 'Rp 35.000'", V.formatRupiah(35000) === "Rp 35.000");
+check("formatRupiah(30000) = 'Rp 30.000'", V.formatRupiah(30000) === "Rp 30.000");
 check("formatRupiah(250000) = 'Rp 250.000'", V.formatRupiah(250000) === "Rp 250.000");
 
 console.log("== Uji 4: pesan WhatsApp ==");
 V.clear();
-V.add({ id: "1", name: "Cetak Sablon DTF", price: 35000, unit: "A3", image: "x", qty: 2 });
+V.add({ id: "1", name: "Cetak Sablon DTF", price: 30000, unit: "A3", image: "x", qty: 2 });
 V.add({ id: "3", name: "Kaos Custom DTF", price: 75000, unit: "pcs", image: "x", qty: 1 });
 const msg = V.buildWaMessage();
 check("pesan memuat nama produk 1", msg.includes("Cetak Sablon DTF"));
-check("pesan memuat nama produk 2", msg.includes("Kaos Custom DTF"));
+check("pesan memuat nama produk 2 (ID 3)", msg.includes("Kaos Custom DTF"));
 check("pesan memuat qty 2", msg.includes("Qty      : 2"));
-check("pesan memuat subtotal 70.000", msg.includes("70.000"));
+// 2 pcs Cetak Sablon DTF x 30.000 = 60.000
+check("pesan memuat subtotal 60.000", msg.includes("60.000"));
 check("pesan memuat TOTAL PESANAN", msg.includes("TOTAL PESANAN"));
-check("total di pesan = 145.000", msg.includes("145.000"));
+// 60.000 + 75.000 = 135.000
+check("total di pesan = 135.000", msg.includes("135.000"));
 const url = V.waCheckoutUrl();
 check("URL wa.me benar", url.startsWith("https://wa.me/6282134340609?text="));
 check("URL ter-encode", url.includes("%0A"));
